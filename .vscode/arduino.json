@@ -1,4 +1,6 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "Fan.ino"
+    "sketch": "rc_car_interface.ino",
+    "port": "COM3",
+    "programmer": "AVRISP mkII"
 }
