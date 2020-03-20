@@ -11,20 +11,24 @@
         Forward and backwards has not been tested thus far.
 */
 
-int left_turn = 6;
-int power = 0;
+int led = 6;           // the PWM pin the LED is attached to
+int brightness = 0;    // how bright the LED is
+int fadeAmount = 5;    // how many points to fade the LED by
 
+// the setup routine runs once when you press reset:
 void setup() {
-    pinMode(left_turn, OUTPUT);
+  // declare pin 9 to be an output:
+  pinMode(led, OUTPUT);
 }
 
+// the loop routine runs over and over again forever:
 void loop() {
-    digitalWrite(left_turn, HIGH);
-    delay(1000);
-    digitalWrite(left_turn, LOW);
-    delay(2000);
-    digitalWrite(left_turn, HIGH);
-    delay(1000);
-    digitalWrite(left_turn, LOW);
-    delay(1000);
+  analogWrite(led, brightness);
+
+  brightness = brightness + fadeAmount;
+
+  if (brightness <= 0 || brightness >= 255) {
+    fadeAmount = -fadeAmount;
+  }
+  delay(30);
 }
